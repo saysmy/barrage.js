@@ -123,7 +123,7 @@ barrage.prototype.resize = function(){
 
     // 清空船只销毁的定时器
     if(boatDestroyTimeoutArr.length > 0){
-        console.log('[Clear boatDestroyTimeoutArr]:', boatDestroyTimeoutArr)            
+        Log.l('[Clear boatDestroyTimeoutArr]:', boatDestroyTimeoutArr)            
         boatDestroyTimeoutArr.forEach(function(val, index){
             clearTimeout(val)
             if(index == boatDestroyTimeoutArr.length - 1){
@@ -156,7 +156,7 @@ barrage.prototype.emitPush = function(people, channelId){
         if(!freeChannel){
             // 没有空闲的航道，弹幕需要排队显示，此时mode一定为queue模式
             if(config.mode !== 'queue'){
-                console.warn('弹幕模式不匹配，选择航道错误')
+                Log.w('弹幕模式不匹配，选择航道错误')
                 return
             }
             // 临时存储弹幕，等待航道空闲后释放弹幕
@@ -230,9 +230,9 @@ barrage.prototype.getTargetChannel = function(){
             judgment[3].push({id: channel.id})
             continue;
         }else if(channel.lock){
-            //console.log('此航道被锁住')
+            //Log.w('此航道被锁住')
         }else{
-            console.warn('进入未知航道状态')
+            Log.w('进入未知航道状态')
         }
     }
 
